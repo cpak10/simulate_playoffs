@@ -43,7 +43,14 @@ class chanceMakePlayoffs:
                     else:
                         teams_standing_dup[match[1]][1] += 1
                 else:
-                    index = random.randint(0, 1)
+                    team_0_wins = teams_standing_dup[match[0]][0]
+                    team_1_wins = teams_standing_dup[match[1]][0]
+                    bar_over_under = team_0_wins / (team_0_wins + team_1_wins)
+                    random_outcome = random.uniform(0, 1)
+                    if bar_over_under >= random_outcome:
+                        index = 0
+                    else:
+                        index = 1
                     teams_standing_dup[match[index]][0] += 1
                     if index == 1:
                         teams_standing_dup[match[0]][1] += 1
